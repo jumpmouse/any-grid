@@ -1,0 +1,84 @@
+/* MX GRID*/
+
+//common variables
+@grid_num: 12;   //total number of columns
+@margin_top: 0px;
+@margin_bottom: 10px;
+@padding_top: 0px;
+@padding_bottom: 0px;
+@height: 60px;
+
+/***** FLUID GRID. change layout parameters here *****/
+@lr_margin: 0.3%;	//left/right margin of single item. Must be in %
+@lr_padding: 0;	//left/right padding of single item. Must be in %
+
+/***** FIXED ITEM WIDTH GRID. change layout parameters here *****/
+@item_width: 70px;
+@fix_lr_margin: 5px;	//left/right margin of single item.
+@fix_lr_padding: 0;		//left/right padding of single item.
+
+
+/************* grid mixins ************/
+/* fluid mixin */
+.box-fluid-mx (@column_num){
+	width: (100% * @column_num / @grid_num  - @lr_margin*2 - @lr_padding*2);
+	float: left;
+	margin: @margin_top @lr_margin @margin_bottom @lr_margin;
+	padding: @padding_top @lr_padding @padding_bottom @lr_padding;
+	height: @height;
+	.mx-line &{
+		width: ((100% + @lr_margin*2) * @column_num / @grid_num - @lr_margin*2 - @lr_padding*2);
+	}
+}
+/* fixed width mixin */
+.box-mx (@column_num){
+	width: (@item_width * @column_num - @fix_lr_margin*2 - @fix_lr_padding*2);
+	float: left;
+	margin: @margin_top @fix_lr_margin @margin_bottom @fix_lr_margin;
+	padding: @padding_top @fix_lr_padding @padding_bottom @fix_lr_padding;
+	height: @height;
+}
+
+/*******Box Generator*******/
+.box-gen (@index) when (@index > 0) {
+	.mx-box@{index} {
+		.box-fluid-mx(@index);
+		.mx-container-fix &{
+			.box-mx(@index);
+		}
+	}
+  .box-gen(@index - 1);
+}
+.box-gen (0) {}
+.box-gen (@grid_num);
+
+/******* Containers ********/
+.mx-container, .mx-container-fix{
+	width: 100%;
+	.clearfix();
+}
+
+.mx-line{
+	width: 100%;
+	.clearfix();
+	clear: both;
+	:first-child{margin-left: 0;};
+	:last-child{margin-right: 0;};
+}
+
+/************UTILITES***************/
+
+// Clearfix
+// http://nicolasgallagher.com
+.clearfix(){
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
