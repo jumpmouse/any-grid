@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Any-grid by jumpmouse</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jumpmouse/any-grid">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/jumpmouse/any-grid/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/jumpmouse/any-grid/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Any-grid</h1>
+          <p>Less fluid and fixed-width grid with variable number of columns</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/jumpmouse">jumpmouse</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h2>Very simple and powerful LESS GRID.</h2>
+
+<h3>Don't like 12 or 16 column grids? Need custom grid with e.g. 11 columns? No problem.</h3>
+
+<hr><ol>
+<li>Open mx-grid.less</li>
+<li>Choose number of columns (@grid_num)</li>
+<li>If using fixed-width grid, enter width of the single column (@item_width)</li>
+<li>Set margin and padding.</li>
+</ol><p>...and compile.</p>
+
+<p>Compiled css will have set of fluid classes: e.g. <strong>@grid_num=11</strong>  =&gt;  <strong>.mx-box1 - .mx-box11</strong>, where <strong>.mx-box1</strong> is <strong>1/11</strong> of the container width and <strong>.mx-box11</strong> is <strong>full width</strong> element.</p>
+
+<p>Also, there will be same classes with fixed width in <strong>.mx-container-fix</strong>, where <strong>.mx-box1 = @item_width</strong> and <strong>.mx-box11 = 11 * @item_width.</strong></p>
+
+<p>Margin and padding are working flawlessly.</p>
+
+<p>Possible nesting.</p>
+
+<p><strong>.mx-line</strong> is one-line container class, that removes left margin of the first-child, and the right margin of the last-child.</p>
+
+<p>html example:</p>
+
+<pre><code>&lt;div class="container"&gt;
+    &lt;div class="mx-box2"&gt;hello&lt;/div&gt;
+    &lt;div class="mx-box6"&gt;World&lt;/div&gt;
+    &lt;div class="mx-box3"&gt;!&lt;/div&gt;
+    &lt;div class="mx-box11"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="container"&gt;
+    &lt;div class="mx-line"&gt;
+        &lt;div class="mx-box4"&gt;4&lt;/div&gt;
+        &lt;div class="mx-box7"&gt;7&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mx-line"&gt;           
+        &lt;div class="mx-box6"&gt;6&lt;/div&gt;
+        &lt;div class="mx-box5"&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="container-fix"&gt;
+    &lt;div class="mx-box7"&gt;hello&lt;/div&gt;
+    &lt;div class="mx-box4"&gt;World&lt;/div&gt;
+    &lt;div class="mx-line"&gt;
+        &lt;div class="mx-box1"&gt;1&lt;/div&gt;
+        &lt;div class="mx-box4"&gt;4&lt;/div&gt;
+        &lt;div class="mx-box1"&gt;1&lt;/div&gt;
+        &lt;div class="mx-box4"&gt;4&lt;/div&gt;
+        &lt;div class="mx-box1"&gt;1&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
